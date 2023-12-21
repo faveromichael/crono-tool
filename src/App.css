@@ -1,0 +1,25 @@
+.headerStyle {
+  height: 64px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: #ff2f2f;
+}
+
+.contentStyle {
+  text-align: center;
+  height: 100%;
+  color: #000;
+  background-color: #ffeaea;
+}
+
+.footerStyle {
+  text-align: center;
+  color: #000;
+  background-color: #ffeaea;
+}
+
+.layoutStyle {
+  width: 100%;
+}
