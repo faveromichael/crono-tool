@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Flex, Layout} from 'antd';
+import FileUploader from './Components/FileUploader/FileUploader';
+import StageClassification from './Components/StageClassification/StageClassification';
+import OverallClassification from './Components/OverallClassification/OverallClassification';
 import './App.css';
 
 // Import the functions you need from the SDKs you need
@@ -24,9 +27,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const {Header, Footer, Content} = Layout;
+const {Header, Footer, Content, Sider} = Layout;
 
 function App() {
+  const [logFile, setLogFile]=useState(null);
+
   return (
     <div>
       <Flex gap="middle" wrap="wrap">
@@ -35,6 +40,15 @@ function App() {
             AC Crono Tool
           </Header>
           <Content className="contentStyle">
+            <FileUploader setLogFile={setLogFile}/>
+            <Layout className="layoutStyle">
+              <Sider width="50%" className="siderStyle">
+                <StageClassification logFile={logFile}/>
+              </Sider>
+              <Sider width="50%" className="siderStyle">
+                <OverallClassification logFile={logFile}/>
+              </Sider>
+            </Layout>
           </Content>
           <Footer className="footerStyle">
           </Footer>
