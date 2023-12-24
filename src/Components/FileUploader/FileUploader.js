@@ -3,7 +3,7 @@ import {UploadOutlined} from '@ant-design/icons';
 import {Button, Upload, message} from 'antd';
 import "./FileUploader.css";
 
-export default function FileUploader({setLogFile}){
+export default function FileUploader({setLogFile, setFileList}){
     const handleChange=({file, fileList})=>{
         if(file.status != 'uploading'){
             new Promise((resolve, reject) => {
@@ -14,7 +14,9 @@ export default function FileUploader({setLogFile}){
             }).then(b64=>{
                 b64=b64.replace(/^data:application\/[a-z]+;base64,/, "");
                 const json=JSON.parse(atob(b64));
+                json.uid=file.uid;
                 setLogFile(json);
+                setFileList(fileList);
             });
         }
         if(file.status == 'done'){
