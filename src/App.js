@@ -31,6 +31,7 @@ const {Header, Footer, Content, Sider} = Layout;
 
 function App() {
   const [logFile, setLogFile]=useState(null);
+  const [fileList, setFileList]=useState([]);
 
   return (
     <div>
@@ -40,10 +41,10 @@ function App() {
             AC Crono Tool
           </Header>
           <Content className="contentStyle">
-            <FileUploader setLogFile={setLogFile}/>
+            <FileUploader setLogFile={setLogFile} setFileList={setFileList}/>
             <Layout className="layoutStyle">
               <Sider width="50%" className="siderStyle">
-                <StageClassification logFile={logFile}/>
+                <StageClassification logFile={logFile} fileList={fileList}/>
               </Sider>
               <Sider width="50%" className="siderStyle">
                 <OverallClassification logFile={logFile}/>
